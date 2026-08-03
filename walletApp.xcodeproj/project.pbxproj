@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3DB1D9D3020140F0050B11A /* SharedModels in Resources */ = {isa = PBXBuildFile; fileRef = C3DB1D9C3020140F0050B11A /* SharedModels */; };
+		C3DB1D9F302015230050B11A /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = C3DB1D9E302015230050B11A /* SharedModels */; };
+		C3DB1DA5302016130050B11A /* FeatureLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C3DB1DA4302016130050B11A /* FeatureLogin */; };
 		C3F504963016D682008A9B9C /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C3F504953016D682008A9B9C /* CoreNetworking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C3F504823016D17E008A9B9C /* walletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = walletApp.app; path = "/Volumes/karthik_Space/IOS/walletApp/build/Debug-iphoneos/walletApp.app"; sourceTree = "<absolute>"; };
+		C3DB1D87301F254F0050B11A /* walletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = walletApp.app; path = "/Volumes/karthik_Space/IOS/walletApp/build/Debug-iphoneos/walletApp.app"; sourceTree = "<absolute>"; };
+		C3DB1D9C3020140F0050B11A /* SharedModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SharedModels; sourceTree = "<group>"; };
 		C3F504903016D1B2008A9B9C /* CoreNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreNetworking; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -28,7 +32,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DB1DA5302016130050B11A /* FeatureLogin in Frameworks */,
 				C3F504963016D682008A9B9C /* CoreNetworking in Frameworks */,
+				C3DB1D9F302015230050B11A /* SharedModels in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +46,7 @@
 			children = (
 				C3F504843016D17E008A9B9C /* walletApp */,
 				C3F504903016D1B2008A9B9C /* CoreNetworking */,
+				C3DB1D9C3020140F0050B11A /* SharedModels */,
 				C3F504943016D682008A9B9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -72,9 +79,11 @@
 			name = walletApp;
 			packageProductDependencies = (
 				C3F504953016D682008A9B9C /* CoreNetworking */,
+				C3DB1D9E302015230050B11A /* SharedModels */,
+				C3DB1DA4302016130050B11A /* FeatureLogin */,
 			);
 			productName = walletApp;
-			productReference = C3F504823016D17E008A9B9C /* walletApp.app */;
+			productReference = C3DB1D87301F254F0050B11A /* walletApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -101,6 +110,9 @@
 			);
 			mainGroup = C3F504793016D17E008A9B9C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C3DB1DA3302016130050B11A /* XCLocalSwiftPackageReference "FeatureLogin" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C3F504793016D17E008A9B9C;
 			projectDirPath = "";
@@ -116,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DB1D9D3020140F0050B11A /* SharedModels in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +349,22 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		C3DB1DA3302016130050B11A /* XCLocalSwiftPackageReference "FeatureLogin" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = FeatureLogin;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		C3DB1D9E302015230050B11A /* SharedModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedModels;
+		};
+		C3DB1DA4302016130050B11A /* FeatureLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureLogin;
+		};
 		C3F504953016D682008A9B9C /* CoreNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreNetworking;

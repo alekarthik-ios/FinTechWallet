@@ -7,8 +7,12 @@
 
 import Foundation
 
-public struct NetworkClient {
+public struct NetworkClient: NetworkClientProtocol {
     var baseURL: String
+    
+    public init(baseURL: String) {
+        self.baseURL = baseURL
+    }
     
     public func request<T: Decodable> (endpoint:Endpoint ) async throws-> T {
         
