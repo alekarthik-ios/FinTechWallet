@@ -26,6 +26,10 @@ let package = Package(
             name: "FeatureLogin",
             dependencies: ["CoreNetworking", "SharedModels"]
         ),
+        .testTarget(
+            name: "FeatureLoginTests",
+            dependencies: ["FeatureLogin", "CoreNetworking", "SharedModels"]
+        ),
 
     ],
     

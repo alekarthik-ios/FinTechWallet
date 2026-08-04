@@ -12,4 +12,11 @@ public struct AuthToken: Decodable {
      public var accessToken: String
      public var expiryDate: Date
  
+    public init(userId: String, accessToken: String, expiryDate: Date){
+        self.userId = userId
+        self.accessToken = accessToken
+        self.expiryDate = expiryDate
+    }
 }
+
+
