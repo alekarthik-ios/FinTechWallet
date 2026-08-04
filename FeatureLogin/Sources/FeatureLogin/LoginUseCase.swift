@@ -7,7 +7,7 @@
 import Foundation
 import SharedModels
 
-public protocol LoginUseCaseProtocol {
+public protocol LoginUseCaseProtocol: Sendable {
     func execute(email: String, password: String) async throws -> AuthToken
 }
 

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct walletAppApp: App {
+    @StateObject private var coordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            coordinator.makeLoginView()
         }
     }
 }

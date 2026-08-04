@@ -11,12 +11,12 @@ import CoreNetworking
 import SharedModels
 
 
-public protocol LoginRepositoryProtocol {
+public protocol LoginRepositoryProtocol: Sendable {
         
     func login(email: String, password: String) async throws -> AuthToken
 }
 
-public class LoginRepository: LoginRepositoryProtocol {
+public final class LoginRepository: LoginRepositoryProtocol {
     
     private let networking: NetworkClientProtocol
     
