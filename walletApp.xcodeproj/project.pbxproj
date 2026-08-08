@@ -16,6 +16,7 @@
 /* Begin PBXFileReference section */
 		C3DB1D87301F254F0050B11A /* walletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = walletApp.app; path = "/Volumes/karthik_Space/IOS/walletApp/build/Debug-iphoneos/walletApp.app"; sourceTree = "<absolute>"; };
 		C3DB1D9C3020140F0050B11A /* SharedModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SharedModels; sourceTree = "<group>"; };
+		C3DB1DA830259C8F0050B11A /* CoreStorage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreStorage; sourceTree = "<group>"; };
 		C3F504903016D1B2008A9B9C /* CoreNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreNetworking; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				C3F504843016D17E008A9B9C /* walletApp */,
+				C3DB1DA830259C8F0050B11A /* CoreStorage */,
 				C3F504903016D1B2008A9B9C /* CoreNetworking */,
 				C3DB1D9C3020140F0050B11A /* SharedModels */,
 				C3F504943016D682008A9B9C /* Frameworks */,

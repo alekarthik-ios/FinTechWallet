@@ -10,6 +10,7 @@ import SwiftUI
 import CoreNetworking
 import FeatureLogin
 import Combine
+import CoreStorage
 
 @MainActor
 final class AppCoordinator: ObservableObject {
@@ -17,7 +18,8 @@ final class AppCoordinator: ObservableObject {
     func makeLoginView() -> some View {
         let network = NetworkClient(baseURL: "https://api.paypal.com")
         let repo = LoginRepository(networking: network)
-        let useCase = LoginUseCase(repository: repo)
+        let keychain = KeychainService()
+        let useCase = LoginUseCase(repository: repo, keychain: keychain)
         let viewModel = LoginViewModel(useCase: useCase)
         viewModel.onLoginSuccess = {
             print("Login success! Navigate here")
