@@ -23,7 +23,7 @@ public struct LoginView: View {
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing
                 )
-                .ignoresSafeArea()
+                .edgesIgnoringSafeArea(.all)
     
                 
                 VStack(spacing: 8) {

@@ -13,7 +13,13 @@ struct walletAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            coordinator.makeLoginView()
+            switch coordinator.appState {
+                case .login:
+                coordinator.makeLoginView()
+                
+                case .wallet:
+                coordinator.makeWalletView()
+            }
         }
     }
 }
