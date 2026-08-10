@@ -11,6 +11,7 @@
 		C3DB1D9F302015230050B11A /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = C3DB1D9E302015230050B11A /* SharedModels */; };
 		C3DB1DA5302016130050B11A /* FeatureLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C3DB1DA4302016130050B11A /* FeatureLogin */; };
 		C3DB1DAD302848A80050B11A /* FeatureWallet in Frameworks */ = {isa = PBXBuildFile; productRef = C3DB1DAC302848A80050B11A /* FeatureWallet */; };
+		C3DB1DB630292DE40050B11A /* FeatureSendMoney in Frameworks */ = {isa = PBXBuildFile; productRef = C3DB1DB530292DE40050B11A /* FeatureSendMoney */; };
 		C3F504963016D682008A9B9C /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C3F504953016D682008A9B9C /* CoreNetworking */; };
 /* End PBXBuildFile section */
 
@@ -19,6 +20,7 @@
 		C3DB1D9C3020140F0050B11A /* SharedModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SharedModels; sourceTree = "<group>"; };
 		C3DB1DA830259C8F0050B11A /* CoreStorage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreStorage; sourceTree = "<group>"; };
 		C3DB1DAA3027F4120050B11A /* FeatureWallet */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureWallet; sourceTree = "<group>"; };
+		C3DB1DB330292CE70050B11A /* FeatureSendMoney */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureSendMoney; sourceTree = "<group>"; };
 		C3F504903016D1B2008A9B9C /* CoreNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreNetworking; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DB1DB630292DE40050B11A /* FeatureSendMoney in Frameworks */,
 				C3DB1DA5302016130050B11A /* FeatureLogin in Frameworks */,
 				C3F504963016D682008A9B9C /* CoreNetworking in Frameworks */,
 				C3DB1DAD302848A80050B11A /* FeatureWallet in Frameworks */,
@@ -45,7 +48,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C3DB1DAB302848A80050B11A /* Frameworks */ = {
+		C3DB1DB430292DE40050B11A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -60,7 +63,8 @@
 				C3F504903016D1B2008A9B9C /* CoreNetworking */,
 				C3DB1D9C3020140F0050B11A /* SharedModels */,
 				C3DB1DAA3027F4120050B11A /* FeatureWallet */,
-				C3DB1DAB302848A80050B11A /* Frameworks */,
+				C3DB1DB330292CE70050B11A /* FeatureSendMoney */,
+				C3DB1DB430292DE40050B11A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +92,7 @@
 				C3DB1D9E302015230050B11A /* SharedModels */,
 				C3DB1DA4302016130050B11A /* FeatureLogin */,
 				C3DB1DAC302848A80050B11A /* FeatureWallet */,
+				C3DB1DB530292DE40050B11A /* FeatureSendMoney */,
 			);
 			productName = walletApp;
 			productReference = C3DB1D87301F254F0050B11A /* walletApp.app */;
@@ -375,6 +380,10 @@
 		C3DB1DAC302848A80050B11A /* FeatureWallet */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureWallet;
+		};
+		C3DB1DB530292DE40050B11A /* FeatureSendMoney */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureSendMoney;
 		};
 		C3F504953016D682008A9B9C /* CoreNetworking */ = {
 			isa = XCSwiftPackageProductDependency;

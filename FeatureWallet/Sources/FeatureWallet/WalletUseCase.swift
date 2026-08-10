@@ -23,9 +23,9 @@ public final class WalletUseCase: WalletUseCaseProtocol {
     let walletRepository: WalletRepositoryProtocol
     let keychainService: KeychainServiceProtocol
     
-    public init(walletRepository: WalletRepositoryProtocol, KeychainService: KeychainServiceProtocol) {
+    public init(walletRepository: WalletRepositoryProtocol, keychainService: KeychainServiceProtocol) {
         self.walletRepository = walletRepository
-        self.keychainService = KeychainService
+        self.keychainService = keychainService
         }
     public func execute() async throws -> Wallet {
         guard let data = try keychainService.read(forKey: "authToken") else {

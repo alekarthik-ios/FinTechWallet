@@ -21,6 +21,8 @@ public final class WalletViewModel: ObservableObject {
     @Published public var isLoading: Bool = false
     @Published public var errorMessage: String?
     
+    public var onSendMoneyTapped:(() -> Void)?
+    
     
     public func fetchBalance() async {
         isLoading = true

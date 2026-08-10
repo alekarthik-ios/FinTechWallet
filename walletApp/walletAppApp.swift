@@ -2,7 +2,7 @@
 //  walletAppApp.swift
 //  walletApp
 //
-//  Created by BHAVYA SUREPALLY on 7/26/26.
+//  Created by Karthik Ale on 7/26/26.
 //
 
 import SwiftUI
@@ -19,6 +19,9 @@ struct walletAppApp: App {
                 
                 case .wallet:
                 coordinator.makeWalletView()
+                
+                case .sendMoney:
+                coordinator.makeSendMoneyView()
             }
         }
     }

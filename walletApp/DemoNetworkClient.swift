@@ -33,6 +33,17 @@ final class DemoNetworkClient: NetworkClientProtocol {
            
            return wallet as! T
            
+       case .sendMoney:
+           let transaction = Transaction(
+            id: UUID(),
+            amount: 10.00,
+            recipient: "demo-user",
+            status: .completed,
+            timestamp: Date()
+           )
+           
+           return transaction as! T
+           
        default:
            fatalError("Endpoint not mocked")
         }

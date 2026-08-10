@@ -12,10 +12,12 @@ import FeatureLogin
 import Combine
 import CoreStorage
 import FeatureWallet
+import FeatureSendMoney
 
 enum AppState{
     case login
     case wallet
+    case sendMoney
 
 }
 
@@ -41,10 +43,26 @@ final class AppCoordinator: ObservableObject {
         let network = DemoNetworkClient()
         let repo = WalletRepository(networkClient: network)
         let keychain = KeychainService()
-        let useCase = WalletUseCase(walletRepository: repo, KeychainService: keychain)
+        let useCase = WalletUseCase(walletRepository: repo, keychainService: keychain)
         let viewModel = WalletViewModel(walletUseCase: useCase)
-        
+        viewModel.onSendMoneyTapped = { [weak self] in
+            self?.appState = .sendMoney
+        }
         return WalletView(viewModel: viewModel)
+    }
+    
+    func makeSendMoneyView() -> some View {
+        let network = DemoNetworkClient()
+        let repo = SendMoneyRepository(networkClient: network)
+        let keychain = KeychainService()
+        let useCase = SendMoneyUseCase(sendMoneyRepository: repo, keychainService: keychain)
+        let viewModel = SendMoneyViewModel(sendMoneyUseCase: useCase)
+        
+        viewModel.onBackTapped = { [weak self] in
+            self?.appState = .wallet
+        }
+        
+        return SendMoneyView(viewModel: viewModel)
     }
     
 }
