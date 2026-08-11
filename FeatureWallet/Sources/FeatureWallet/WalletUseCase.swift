@@ -15,7 +15,7 @@ public enum WalletError: Error {
 }
 
 public protocol WalletUseCaseProtocol: Sendable {
-    func execute() async throws -> Wallet
+    func execute() async throws -> WalletDashboard
 }
 
 public final class WalletUseCase: WalletUseCaseProtocol {
@@ -27,15 +27,16 @@ public final class WalletUseCase: WalletUseCaseProtocol {
         self.walletRepository = walletRepository
         self.keychainService = keychainService
         }
-    public func execute() async throws -> Wallet {
+    public func execute() async throws -> WalletDashboard {
         guard let data = try keychainService.read(forKey: "authToken") else {
             throw WalletError.notAuthenticated
         }
         
         let token = try JSONDecoder().decode(AuthToken.self, from: data)
         let wallet = try await walletRepository.fetchBalance(authToken: token.accessToken)
+        let transaction = try await walletRepository.fetchTransactions(authToken: token.accessToken)
         
-        return wallet
+        return WalletDashboard(wallet: wallet, transactions: transaction)
     }
     
 }

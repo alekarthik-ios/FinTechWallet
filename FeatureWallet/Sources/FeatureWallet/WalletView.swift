@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SharedModels
 
 @MainActor
 public struct WalletView: View {
@@ -61,6 +62,35 @@ public struct WalletView: View {
                     actionButton(icon: "arrow.down.circle.fill", label: "Request"){}
                 }
                 .padding(.bottom, 16)
+                
+                // Recent Activity
+                if !viewModel.transactions.isEmpty {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Recent Activity")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        
+                        ForEach(viewModel.transactions, id: \.id) { transaction in
+                            HStack {
+                                Image(systemName: transaction.amount > 0 ? "arrow.down.circle.fill" : "arrow.up.circle.fill")
+                                    .foregroundColor(.white)
+                                
+                                Text(transaction.recipient)
+                                    .foregroundColor(.white)
+                                
+                                Spacer()
+                                
+                                Text(String(format: "$%.2f", transaction.amount))
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                            .padding()
+                            .background(.white.opacity(0.15))
+                            .cornerRadius(12)
+                        }
+                    }
+                    .padding(.top, 16)
+                }
                 
                 // Error
                 if let error = viewModel.errorMessage {

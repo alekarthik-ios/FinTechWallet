@@ -11,6 +11,7 @@ public enum Endpoint
     case login (email: String, password: String)
     case getWallet
     case sendMoney (amount: Double, recipientId: UUID)
+    case getTransactions
     
     
     
@@ -22,6 +23,8 @@ public enum Endpoint
             return "/wallet/balance"
         case .sendMoney:
             return "/send-money"
+        case .getTransactions:
+            return "/transactions"
         }
         
     }
@@ -34,6 +37,8 @@ public enum Endpoint
             return "GET"
         case .sendMoney:
             return "POST"
+        case .getTransactions:
+            return "GET"
         }
     }
     
@@ -46,6 +51,8 @@ public enum Endpoint
             return nil
         case .sendMoney(let amount, let recipientId):
             return ["amount": amount, "recipientId": recipientId]
+        case .getTransactions:
+            return nil
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SharedModels
 
 @MainActor
 public final class WalletViewModel: ObservableObject {
@@ -20,6 +21,7 @@ public final class WalletViewModel: ObservableObject {
     @Published public var balance: String = "0.00"
     @Published public var isLoading: Bool = false
     @Published public var errorMessage: String?
+    @Published public var transactions: [Transaction] = []
     
     public var onSendMoneyTapped:(() -> Void)?
     
@@ -27,8 +29,9 @@ public final class WalletViewModel: ObservableObject {
     public func fetchBalance() async {
         isLoading = true
         do {
-            let wallet = try await walletUseCase.execute()
-            self.balance = String(format: "$%.2f", wallet.balance)
+            let dashboard = try await walletUseCase.execute()
+            self.balance = String(format: "$%.2f", dashboard.wallet.balance)
+            self.transactions = dashboard.transactions
         } catch {
             self.errorMessage = error.localizedDescription
         }
