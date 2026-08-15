@@ -26,6 +26,10 @@ let package = Package(
             name: "FeatureWallet",
             dependencies:    ["CoreNetworking", "SharedModels", "CoreStorage"]
         ),
+        .testTarget(
+            name: "FeatureWalletTests",
+            dependencies: ["FeatureWallet", "CoreNetworking", "CoreStorage", "SharedModels"]
+        ),
 
     ],
     swiftLanguageModes: [.v6]

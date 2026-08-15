@@ -30,4 +30,3 @@ public final class LoginUseCase: LoginUseCaseProtocol {
         return token
     }
 }
-

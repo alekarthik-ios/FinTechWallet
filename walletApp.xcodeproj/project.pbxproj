@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C3DB1D87301F254F0050B11A /* walletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = walletApp.app; path = "/Volumes/karthik_Space/IOS/walletApp/build/Debug-iphoneos/walletApp.app"; sourceTree = "<absolute>"; };
+		C32A30C13029A7FB00C0934B /* walletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = walletApp.app; path = "/Volumes/karthik_Space/IOS/walletApp/build/Debug-iphoneos/walletApp.app"; sourceTree = "<absolute>"; };
 		C3DB1D9C3020140F0050B11A /* SharedModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SharedModels; sourceTree = "<group>"; };
 		C3DB1DA830259C8F0050B11A /* CoreStorage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreStorage; sourceTree = "<group>"; };
 		C3DB1DAA3027F4120050B11A /* FeatureWallet */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureWallet; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				C3DB1DB530292DE40050B11A /* FeatureSendMoney */,
 			);
 			productName = walletApp;
-			productReference = C3DB1D87301F254F0050B11A /* walletApp.app */;
+			productReference = C32A30C13029A7FB00C0934B /* walletApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
