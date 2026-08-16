@@ -29,9 +29,9 @@ A production-grade modular iOS fintech application built with Swift 6, SwiftUI, 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                     walletApp                           │
-│              (AppCoordinator + Entry Point)              │
+│              (AppCoordinator + Entry Point)             │
 │                                                         │
-│     ┌──────────┐  ┌──────────────┐  ┌───────────────┐  │
+│     ┌──────────┐  ┌──────────────┐  ┌───────────────┐   │
 │     │ Feature  │  │   Feature    │  │    Feature     │  │
 │     │  Login   │  │   Wallet     │  │   SendMoney    │  │
 │     └────┬─────┘  └──────┬───────┘  └───────┬────────┘  │
@@ -45,14 +45,14 @@ A production-grade modular iOS fintech application built with Swift 6, SwiftUI, 
 │     │              Core Layer                        │  │
 │     │                                                │  │
 │     │  ┌────────────────┐  ┌───────────────────┐     │  │
-│     │  │ CoreNetworking │  │    CoreStorage     │     │  │
-│     │  │  NetworkClient │  │  KeychainService   │     │  │
-│     │  │    Endpoint    │  │  (Secure Tokens)   │     │  │
+│     │  │ CoreNetworking │  │    CoreStorage    │     │  │
+│     │  │  NetworkClient │  │  KeychainService  │     │  │
+│     │  │    Endpoint    │  │  (Secure Tokens)  │     │  │
 │     │  └────────────────┘  └───────────────────┘     │  │
 │     │                                                │  │
 │     │  ┌────────────────────────────────────────┐    │  │
-│     │  │           SharedModels                  │    │  │
-│     │  │    AuthToken · Wallet · Transaction     │    │  │
+│     │  │           SharedModels                 │    │  │
+│     │  │    AuthToken · Wallet · Transaction    │    │  │
 │     │  └────────────────────────────────────────┘    │  │
 │     └────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────┘
