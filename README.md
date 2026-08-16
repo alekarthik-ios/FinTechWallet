@@ -31,7 +31,7 @@ A production-grade modular iOS fintech application built with Swift 6, SwiftUI, 
 │                     walletApp                           │
 │              (AppCoordinator + Entry Point)             │
 │                                                         │
-│     ┌──────────┐  ┌──────────────┐  ┌───────────────┐   │
+│     ┌──────────┐  ┌──────────────┐  ┌───────────────-┐  │
 │     │ Feature  │  │   Feature    │  │    Feature     │  │
 │     │  Login   │  │   Wallet     │  │   SendMoney    │  │
 │     └────┬─────┘  └──────┬───────┘  └───────┬────────┘  │
