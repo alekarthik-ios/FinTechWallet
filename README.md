@@ -12,13 +12,13 @@ A production-grade modular iOS fintech application built with Swift 6, SwiftUI, 
 |:---:|:---:|:---:|
 
 
-<img width="1206" height="2622" alt="1" src="https://github.com/user-attachments/assets/dd880a36-a1e9-4535-907a-71ddcb5056c3" />
+<img width="240" height="2622" alt="Login" src="https://github.com/user-attachments/assets/dd880a36-a1e9-4535-907a-71ddcb5056c3" />
 
 
-<img width="1206" height="2622" alt="2" src="https://github.com/user-attachments/assets/8d174a2f-e346-43ac-9953-16c1a11682c2" />
+<img width="240" height="2622" alt="Wallet" src="https://github.com/user-attachments/assets/8d174a2f-e346-43ac-9953-16c1a11682c2" />
 
 
-<img width="1206" height="2622" alt="3" src="https://github.com/user-attachments/assets/976d809e-1e42-4a02-a58f-c463a830a4bc" />
+<img width="240" height="2622" alt="SendMoney" src="https://github.com/user-attachments/assets/976d809e-1e42-4a02-a58f-c463a830a4bc" />
 
 ---
 
