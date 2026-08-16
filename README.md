@@ -207,4 +207,5 @@ All tests use **protocol-based mock injection** — no network calls, no Keychai
 ## Author
 
 **Karthik Ale** — iOS Engineer  
-[LinkedIn]https://www.linkedin.com/in/karthik518/ · [Email](mailto:alekarthik51@gmail.com)
+[LinkedIn]- https://www.linkedin.com/in/karthik518/ 
+[Email]- alekarthik51@gmail.com
