@@ -25,6 +25,14 @@ let package = Package(
             name: "FeatureSendMoney",
             dependencies: ["CoreNetworking", "SharedModels", "CoreStorage"]
         ),
+        .testTarget(
+            name: "FeatureSendMoneyTests",
+            dependencies: [
+                "FeatureSendMoney",
+                "CoreStorage",
+                "SharedModels"
+            ]
+        )
 
     ],
     swiftLanguageModes: [.v6]
