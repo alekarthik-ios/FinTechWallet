@@ -18,95 +18,104 @@ public struct WalletView: View {
     }
     
     public var body: some View {
-        ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [.blue, .purple, .pink]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+        let _ = Self._printChanges()
+        
+        switch viewModel.state {
+        case .idle:
+            Color.clear
+                .task { await viewModel.fetchBalance() }
             
-            VStack(spacing: 24) {
-                Spacer()
+        case .loading:
+            ZStack {
+                gradient
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .scaleEffect(1.5)
+            }
+            
+        case .loaded(let balance, let transactions):
+            ZStack {
+                gradient
                 
-                // Greeting
-                Text("Welcome, Karthik")
-                    .font(.title3)
-                    .foregroundColor(.white.opacity(0.8))
-                
-                // Balance
-                if viewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .scaleEffect(1.5)
-                } else {
-                    Text(viewModel.balance)
+                VStack(spacing: 24) {
+                    Spacer()
+                    
+                    Text("Welcome, Karthik")
+                        .font(.title3)
+                        .foregroundColor(.white.opacity(0.8))
+                    
+                    Text(balance)
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(.white)
-                }
-                
-                Text("USD")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.6))
-                    .textCase(.uppercase)
                     
-                
-                Spacer()
-                
-                // Action Buttons
-                HStack(spacing: 32) {
-                    actionButton(icon: "arrow.up.circle.fill", label: "Send"){
-                        viewModel.onSendMoneyTapped?()
-                    }
-                    actionButton(icon: "plus.circle.fill", label: "Add"){}
-                    actionButton(icon: "arrow.down.circle.fill", label: "Request"){}
-                }
-                .padding(.bottom, 16)
-                
-                // Recent Activity
-                if !viewModel.transactions.isEmpty {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Recent Activity")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        ForEach(viewModel.transactions, id: \.id) { transaction in
-                            HStack {
-                                Image(systemName: transaction.amount > 0 ? "arrow.down.circle.fill" : "arrow.up.circle.fill")
-                                    .foregroundColor(.white)
-                                
-                                Text(transaction.recipient)
-                                    .foregroundColor(.white)
-                                
-                                Spacer()
-                                
-                                Text(String(format: "$%.2f", transaction.amount))
-                                    .foregroundColor(.white)
-                                    .fontWeight(.bold)
-                            }
-                            .padding()
-                            .background(.white.opacity(0.15))
-                            .cornerRadius(12)
-                        }
-                    }
-                    .padding(.top, 16)
-                }
-                
-                // Error
-                if let error = viewModel.errorMessage {
-                    Text(error)
+                    Text("USD")
                         .font(.caption)
-                        .foregroundColor(.red)
-                        .padding(.horizontal)
+                        .foregroundColor(.white.opacity(0.6))
+                        .textCase(.uppercase)
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 32) {
+                        actionButton(icon: "arrow.up.circle.fill", label: "Send") {
+                            viewModel.onSendMoneyTapped?()
+                        }
+                        actionButton(icon: "plus.circle.fill", label: "Add") {}
+                        actionButton(icon: "arrow.down.circle.fill", label: "Request") {}
+                    }
+                    .padding(.bottom, 16)
+                    
+                    if !transactions.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Recent Activity")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            ForEach(transactions, id: \.id) { transaction in
+                                HStack {
+                                    Image(systemName: transaction.amount > 0 ? "arrow.down.circle.fill" : "arrow.up.circle.fill")
+                                        .foregroundColor(.white)
+                                    
+                                    Text(transaction.recipient)
+                                        .foregroundColor(.white)
+                                    
+                                    Spacer()
+                                    
+                                    Text(String(format: "$%.2f", transaction.amount))
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                }
+                                .padding()
+                                .background(.white.opacity(0.15))
+                                .cornerRadius(12)
+                            }
+                        }
+                        .padding(.top, 16)
+                    }
+                    
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding()
             }
-            .padding()
+            
+        case .error(let message):
+            ZStack {
+                gradient
+                Text(message)
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .padding(.horizontal)
+            }
         }
-        .task {
-            await viewModel.fetchBalance()
-        }
+    }
+    
+    // MARK: - Gradient
+    private var gradient: some View {
+        LinearGradient(
+            gradient: Gradient(colors: [.blue, .purple, .pink]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
     }
     
     // MARK: - Action Button

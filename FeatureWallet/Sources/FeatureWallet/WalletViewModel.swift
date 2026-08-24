@@ -12,30 +12,35 @@ import SharedModels
 @MainActor
 public final class WalletViewModel: ObservableObject {
     
+   public enum WalletState {
+        case idle
+        case loading
+        case loaded(balance: String, transactions: [Transaction])
+        case error(String)
+    }
+    
     let walletUseCase: WalletUseCaseProtocol
     public init (walletUseCase: WalletUseCaseProtocol) {
         self.walletUseCase = walletUseCase
     }
 
     
-    @Published public var balance: String = "0.00"
-    @Published public var isLoading: Bool = false
-    @Published public var errorMessage: String?
-    @Published public var transactions: [Transaction] = []
+    @Published public var state: WalletState = .idle
     
     public var onSendMoneyTapped:(() -> Void)?
     
     
     public func fetchBalance() async {
-        isLoading = true
+        self.state = .loading
         do {
             let dashboard = try await walletUseCase.execute()
-            self.balance = String(format: "$%.2f", dashboard.wallet.balance)
-            self.transactions = dashboard.transactions
+            self.state = .loaded(
+                balance: String(format: "$%.2f", dashboard.wallet.balance), transactions: dashboard.transactions
+            )
         } catch {
-            self.errorMessage = error.localizedDescription
+            self.state = .error("wallet.error")
         }
-        isLoading = false
+    
     }
     
     
