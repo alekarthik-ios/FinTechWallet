@@ -32,10 +32,12 @@ public final class WalletViewModel: ObservableObject {
     
     public func fetchBalance() async {
         self.state = .loading
+        
         do {
             let dashboard = try await walletUseCase.execute()
             self.state = .loaded(
-                balance: String(format: "$%.2f", dashboard.wallet.balance), transactions: dashboard.transactions
+                balance: String(format: "$%.2f", dashboard.wallet.balance),
+                transactions: dashboard.transactions
             )
         } catch {
             self.state = .error("wallet.error")
