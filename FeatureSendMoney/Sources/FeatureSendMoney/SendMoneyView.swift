@@ -67,21 +67,20 @@ public struct SendMoneyView: View {
                         .cornerRadius(12)
                 }
                 
-                if viewModel.isLoading {
+                switch viewModel.state {
+                case .idle:
+                    EmptyView()
+                case .sending:
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                }
-                
-                if viewModel.isSuccess {
-                    Text("Sent successfully!")
+                case .success:
+                    Text("sent successfully!")
                         .font(.title3)
-                        .foregroundColor(.green)
-                }
-                
-                if let error = viewModel.errorMessage {
-                    Text(error)
-                        .font(.caption)
-                        .foregroundColor(.red)
+                        .foregroundStyle(Color.green)
+                case .failure(let message):
+                    Text(message)
+                        .font(.title3)
+                        .foregroundStyle(Color.red)
                 }
                 
                 Spacer()

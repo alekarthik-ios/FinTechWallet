@@ -10,6 +10,14 @@ import Combine
 
 @MainActor
 public final class SendMoneyViewModel: ObservableObject {
+    
+    public enum SendState {
+        case idle
+        case sending
+        case success
+        case failure(String)
+    }
+    
     let sendMoneyUseCase: SendMoneyUseCaseProtocol
     
     public init(sendMoneyUseCase: SendMoneyUseCaseProtocol) {
@@ -18,28 +26,25 @@ public final class SendMoneyViewModel: ObservableObject {
     
     @Published public var amount: String = ""
     @Published public var recipientId: String = ""
-    @Published public var isLoading: Bool = false
-    @Published public var errorMessage: String?
-    @Published public var isSuccess: Bool = false
+    @Published public var state: SendState = .idle
     public var onBackTapped: (() -> Void)?
     
     public func sendMoney() async {
-        isLoading = true
-        isSuccess = false
-        errorMessage = nil
         
         guard let amountValue = Double(amount), amountValue > 0 else {
-            errorMessage = "Please enter a valid amount"
-            isLoading = false
+            state = .failure("Please enter a valid amount")             //fires a rebuild
             return
         }
+        
+        self.state = .sending                   //fires a rebuild
+        
         do {
             try await sendMoneyUseCase.execute(amount: amountValue, recipientId: recipientId)
-            isSuccess = true
+            state = .success
         } catch {
-            errorMessage = error.localizedDescription
+            state = .failure(error.localizedDescription)
         }
-        isLoading = false
+        
     }
     
 }
