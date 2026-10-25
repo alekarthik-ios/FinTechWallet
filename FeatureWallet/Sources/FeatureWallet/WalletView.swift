@@ -18,93 +18,94 @@ public struct WalletView: View {
     }
     
     public var body: some View {
-        
-        switch viewModel.state {
-        case .idle:
-            Color.clear
-                .task { await viewModel.fetchBalance() }
-            
-        case .loading:
-            ZStack {
-                gradient
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    .scaleEffect(1.5)
-            }
-            
-        case .loaded(let balance, let transactions):
-            ZStack {
-                gradient
+        Group{
+            switch viewModel.state {
+            case .idle:
+                Color.clear
                 
-                VStack(spacing: 24) {
-                    Spacer()
-                    
-                    Text("Welcome, Karthik")
-                        .font(.title3)
-                        .foregroundColor(.white.opacity(0.8))
-                    
-                    Text(balance)
-                        .font(.system(size: 48, weight: .bold))
-                        .foregroundColor(.white)
-                    
-                    Text("USD")
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.6))
-                        .textCase(.uppercase)
-                    
-                    Spacer()
-                    
-                    HStack(spacing: 32) {
-                        actionButton(icon: "arrow.up.circle.fill", label: "Send") {
-                            viewModel.onSendMoneyTapped?()
-                        }
-                        actionButton(icon: "plus.circle.fill", label: "Add") {}
-                        actionButton(icon: "arrow.down.circle.fill", label: "Request") {}
-                    }
-                    .padding(.bottom, 16)
-                    
-                    if !transactions.isEmpty {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Recent Activity")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            
-                            ForEach(transactions, id: \.id) { transaction in
-                                HStack {
-                                    Image(systemName: transaction.amount > 0 ? "arrow.down.circle.fill" : "arrow.up.circle.fill")
-                                        .foregroundColor(.white)
-                                    
-                                    Text(transaction.recipient)
-                                        .foregroundColor(.white)
-                                    
-                                    Spacer()
-                                    
-                                    Text(String(format: "$%.2f", transaction.amount))
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                }
-                                .padding()
-                                .background(.white.opacity(0.15))
-                                .cornerRadius(12)
-                            }
-                        }
-                        .padding(.top, 16)
-                    }
-                    
-                    Spacer()
+            case .loading:
+                ZStack {
+                    gradient
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(1.5)
                 }
-                .padding()
-            }
-            
-        case .error(let message):
-            ZStack {
-                gradient
-                Text(message)
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .padding(.horizontal)
+                
+            case .loaded(let balance, let transactions):
+                ZStack {
+                    gradient
+                    
+                    VStack(spacing: 24) {
+                        Spacer()
+                        
+                        Text("Welcome, Karthik")
+                            .font(.title3)
+                            .foregroundColor(.white.opacity(0.8))
+                        
+                        Text(balance)
+                            .font(.system(size: 48, weight: .bold))
+                            .foregroundColor(.white)
+                        
+                        Text("USD")
+                            .font(.caption)
+                            .foregroundColor(.white.opacity(0.6))
+                            .textCase(.uppercase)
+                        
+                        Spacer()
+                        
+                        HStack(spacing: 32) {
+                            actionButton(icon: "arrow.up.circle.fill", label: "Send") {
+                                viewModel.onSendMoneyTapped?()
+                            }
+                            actionButton(icon: "plus.circle.fill", label: "Add") {}
+                            actionButton(icon: "arrow.down.circle.fill", label: "Request") {}
+                        }
+                        .padding(.bottom, 16)
+                        
+                        if !transactions.isEmpty {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Recent Activity")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                
+                                ForEach(transactions, id: \.id) { transaction in
+                                    HStack {
+                                        Image(systemName: transaction.amount > 0 ? "arrow.down.circle.fill" : "arrow.up.circle.fill")
+                                            .foregroundColor(.white)
+                                        
+                                        Text(transaction.recipient)
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
+                                        
+                                        Text(String(format: "$%.2f", transaction.amount))
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                    }
+                                    .padding()
+                                    .background(.white.opacity(0.15))
+                                    .cornerRadius(12)
+                                }
+                            }
+                            .padding(.top, 16)
+                        }
+                        
+                        Spacer()
+                    }
+                    .padding()
+                }
+                
+            case .error(let message):
+                ZStack {
+                    gradient
+                    Text(message)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                }
             }
         }
+        .task { await viewModel.load()}
     }
     
     // MARK: - Gradient

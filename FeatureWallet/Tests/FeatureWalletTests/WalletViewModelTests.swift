@@ -44,7 +44,7 @@ final class WalletViewModelTests: XCTestCase {
         let dashboard = WalletDashboard(wallet: wallet, transactions: transactions)
         mockUseCase.resultToReturn = dashboard
         
-        await sut.fetchBalance()
+        await sut.load()
         
         if case .loaded(let balance, let transactions) = sut.state {
             XCTAssertEqual(balance, "$143.10")
@@ -60,7 +60,7 @@ final class WalletViewModelTests: XCTestCase {
             
             mockUseCase.errorToThrow = NSError(domain: "", code: 0, userInfo: nil)
             
-            await sut.fetchBalance()
+            await sut.load()
             
             if case .error = sut.state {
             } else {

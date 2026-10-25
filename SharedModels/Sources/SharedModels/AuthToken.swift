@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AuthToken: Codable {
+public struct AuthToken: Codable, Sendable {
      public var userId: String
      public var accessToken: String
      public var expiryDate: Date

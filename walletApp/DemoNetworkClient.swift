@@ -14,6 +14,7 @@ final class DemoNetworkClient: NetworkClientProtocol {
     
     func request<T: Decodable>(endpoint: Endpoint) async throws -> T
     {
+        try await Task.sleep(for: .seconds(3))
        switch endpoint {
        case .login:
            let token = AuthToken(

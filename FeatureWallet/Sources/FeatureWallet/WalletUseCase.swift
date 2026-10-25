@@ -33,10 +33,10 @@ public final class WalletUseCase: WalletUseCaseProtocol {
         }
         
         let token = try JSONDecoder().decode(AuthToken.self, from: data)
-        let wallet = try await walletRepository.fetchBalance(authToken: token.accessToken)
-        let transaction = try await walletRepository.fetchTransactions(authToken: token.accessToken)
+        async let wallet = walletRepository.fetchBalance(authToken: token.accessToken)
+        async let transaction = walletRepository.fetchTransactions(authToken: token.accessToken)
         
-        return WalletDashboard(wallet: wallet, transactions: transaction)
+        return try await WalletDashboard(wallet: wallet, transactions: transaction)
     }
     
 }

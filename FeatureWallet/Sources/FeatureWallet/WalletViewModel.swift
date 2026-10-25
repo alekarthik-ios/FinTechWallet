@@ -30,7 +30,7 @@ public final class WalletViewModel: ObservableObject {
     public var onSendMoneyTapped:(() -> Void)?
     
     
-    public func fetchBalance() async {
+    public func load() async {
         self.state = .loading
         
         do {
@@ -39,7 +39,10 @@ public final class WalletViewModel: ObservableObject {
                 balance: String(format: "$%.2f", dashboard.wallet.balance),
                 transactions: dashboard.transactions
             )
-        } catch {
+        } catch is CancellationError {
+            self.state = .idle
+        }catch {
+            print("Wallet load ended with", error)
             self.state = .error("wallet.error")
         }
     
