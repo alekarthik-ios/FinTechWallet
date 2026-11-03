@@ -18,3 +18,4 @@ public struct WalletDashboard: Sendable {
         self.transactions = transactions
     }
 }
+

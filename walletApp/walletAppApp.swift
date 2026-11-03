@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 @main
 struct walletAppApp: App {
@@ -13,16 +14,23 @@ struct walletAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            switch coordinator.appState {
+            Group{
+                switch coordinator.appState {
                 case .login:
-                coordinator.makeLoginView()
-                
+                    coordinator.makeLoginView()
+                    
                 case .wallet:
-                coordinator.makeWalletView()
-                
+                    coordinator.makeWalletView()
+                    
                 case .sendMoney:
-                coordinator.makeSendMoneyView()
+                    coordinator.makeSendMoneyView()
+                }
             }
+            .onOpenURL(perform: { url in
+                print("Deep Link received", url)
+            })
         }
     }
+        
 }
+

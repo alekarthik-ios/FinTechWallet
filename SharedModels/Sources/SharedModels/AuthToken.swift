@@ -8,9 +8,9 @@
 import Foundation
 
 public struct AuthToken: Codable, Sendable {
-     public var userId: String
-     public var accessToken: String
-     public var expiryDate: Date
+     public let userId: String
+     public let accessToken: String
+     public let expiryDate: Date
  
     public init(userId: String, accessToken: String, expiryDate: Date){
         self.userId = userId
