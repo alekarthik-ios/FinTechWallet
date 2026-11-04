@@ -15,8 +15,19 @@
 		C3F504963016D682008A9B9C /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C3F504953016D682008A9B9C /* CoreNetworking */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C38FDB9B309ADC5A00C430A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3F5047A3016D17E008A9B9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3F504813016D17E008A9B9C;
+			remoteInfo = walletApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		C38BB885307351E50064F55F /* walletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = walletApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C38FDB97309ADC5A00C430A2 /* walletAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = walletAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DB1D9C3020140F0050B11A /* SharedModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SharedModels; sourceTree = "<group>"; };
 		C3DB1DA830259C8F0050B11A /* CoreStorage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreStorage; sourceTree = "<group>"; };
 		C3DB1DAA3027F4120050B11A /* FeatureWallet */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FeatureWallet; sourceTree = "<group>"; };
@@ -35,6 +46,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		C38FDB98309ADC5A00C430A2 /* walletAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = walletAppTests;
+			sourceTree = "<group>";
+		};
 		C3F504843016D17E008A9B9C /* walletApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -46,6 +62,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C38FDB94309ADC5A00C430A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F5047F3016D17E008A9B9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,14 +100,39 @@
 				C3DB1D9C3020140F0050B11A /* SharedModels */,
 				C3DB1DAA3027F4120050B11A /* FeatureWallet */,
 				C3DB1DB330292CE70050B11A /* FeatureSendMoney */,
+				C38FDB98309ADC5A00C430A2 /* walletAppTests */,
 				C3DB1DB430292DE40050B11A /* Frameworks */,
 				C38BB885307351E50064F55F /* walletApp.app */,
+				C38FDB97309ADC5A00C430A2 /* walletAppTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C38FDB96309ADC5A00C430A2 /* walletAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C38FDB9D309ADC5A00C430A2 /* Build configuration list for PBXNativeTarget "walletAppTests" */;
+			buildPhases = (
+				C38FDB93309ADC5A00C430A2 /* Sources */,
+				C38FDB94309ADC5A00C430A2 /* Frameworks */,
+				C38FDB95309ADC5A00C430A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C38FDB9C309ADC5A00C430A2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C38FDB98309ADC5A00C430A2 /* walletAppTests */,
+			);
+			name = walletAppTests;
+			packageProductDependencies = (
+			);
+			productName = walletAppTests;
+			productReference = C38FDB97309ADC5A00C430A2 /* walletAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C3F504813016D17E008A9B9C /* walletApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3F5048D3016D17F008A9B9C /* Build configuration list for PBXNativeTarget "walletApp" */;
@@ -122,6 +170,10 @@
 				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
+					C38FDB96309ADC5A00C430A2 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = C3F504813016D17E008A9B9C;
+					};
 					C3F504813016D17E008A9B9C = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -145,11 +197,19 @@
 			projectRoot = "";
 			targets = (
 				C3F504813016D17E008A9B9C /* walletApp */,
+				C38FDB96309ADC5A00C430A2 /* walletAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C38FDB95309ADC5A00C430A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F504803016D17E008A9B9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -161,6 +221,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C38FDB93309ADC5A00C430A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3F5047E3016D17E008A9B9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,7 +237,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C38FDB9C309ADC5A00C430A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3F504813016D17E008A9B9C /* walletApp */;
+			targetProxy = C38FDB9B309ADC5A00C430A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C38FDB9E309ADC5A00C430A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WN6YMRP8M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Rich.walletAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/walletApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/walletApp";
+			};
+			name = Debug;
+		};
+		C38FDB9F309ADC5A00C430A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7WN6YMRP8M;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Rich.walletAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/walletApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/walletApp";
+			};
+			name = Release;
+		};
 		C3F5048B3016D17F008A9B9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -357,6 +474,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C38FDB9D309ADC5A00C430A2 /* Build configuration list for PBXNativeTarget "walletAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C38FDB9E309ADC5A00C430A2 /* Debug */,
+				C38FDB9F309ADC5A00C430A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C3F5047D3016D17E008A9B9C /* Build configuration list for PBXProject "walletApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

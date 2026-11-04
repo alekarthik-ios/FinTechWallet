@@ -8,7 +8,7 @@
 import Foundation
 
 enum DeepLinkParser {
-    static func parse(_ url: URL) -> DeepLink? {
+    nonisolated static func parse(_ url: URL) -> DeepLink? {
         guard url.scheme == "fintechwallet" else { return nil }
         
         switch url.host {
