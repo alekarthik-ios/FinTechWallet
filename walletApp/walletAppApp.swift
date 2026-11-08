@@ -27,7 +27,9 @@ struct walletAppApp: App {
                 }
             }
             .onOpenURL(perform: { url in
-                print("Deep Link received", url)
+                if let link = DeepLinkParser.parse(url) {
+                    coordinator.handle(link)
+                }
             })
         }
     }

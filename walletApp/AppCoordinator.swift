@@ -24,6 +24,7 @@ enum AppState{
 @MainActor
 final class AppCoordinator: ObservableObject {
     @Published var appState: AppState = .login
+    private var sendMoneyPrefill: (recipientId: String?, amount: Decimal?)? = nil
     
     func makeLoginView() -> some View {
         let network = DemoNetworkClient()
@@ -51,6 +52,17 @@ final class AppCoordinator: ObservableObject {
         return WalletView(viewModel: viewModel)
     }
     
+    func handle(_ link: DeepLink){
+        switch link {
+            case .wallet:
+                appState = .wallet
+            
+            case .sendMoney(let recipientId, let amount):
+                sendMoneyPrefill = (recipientId, amount)
+                appState = .sendMoney
+        }
+    }
+    
     func makeSendMoneyView() -> some View {
         let network = DemoNetworkClient()
         let repo = SendMoneyRepository(networkClient: network)
@@ -58,11 +70,18 @@ final class AppCoordinator: ObservableObject {
         let useCase = SendMoneyUseCase(sendMoneyRepository: repo, keychainService: keychain)
         let viewModel = SendMoneyViewModel(sendMoneyUseCase: useCase)
         
+        if let sendMoneyPrefill {
+            viewModel.recipientId = sendMoneyPrefill.recipientId ?? ""
+            viewModel.amount = sendMoneyPrefill.amount.map{"\($0)"} ?? ""
+            self.sendMoneyPrefill = nil
+        }
+        
         viewModel.onBackTapped = { [weak self] in
             self?.appState = .wallet
         }
         
         return SendMoneyView(viewModel: viewModel)
     }
+    
     
 }
