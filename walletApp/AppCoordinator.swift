@@ -25,6 +25,7 @@ enum AppState{
 final class AppCoordinator: ObservableObject {
     @Published var appState: AppState = .login
     private var sendMoneyPrefill: (recipientId: String?, amount: Decimal?)? = nil
+    private var pendingLink: DeepLink? = nil
     
     func makeLoginView() -> some View {
         let network = DemoNetworkClient()
@@ -33,7 +34,14 @@ final class AppCoordinator: ObservableObject {
         let useCase = LoginUseCase(repository: repo, keychain: keychain)
         let viewModel = LoginViewModel(useCase: useCase)
         viewModel.onLoginSuccess = { [weak self] in
-            self?.appState = .wallet
+            
+            if let link = self?.pendingLink {
+                self?.pendingLink = nil
+                self?.appState = .wallet
+                self?.handle(link)
+            }else{
+                self?.appState = .wallet
+            }
             
         }
         
@@ -53,10 +61,15 @@ final class AppCoordinator: ObservableObject {
     }
     
     func handle(_ link: DeepLink){
+        
+        if appState == .login{
+            pendingLink = link
+            return
+        }
+    
         switch link {
             case .wallet:
                 appState = .wallet
-            
             case .sendMoney(let recipientId, let amount):
                 sendMoneyPrefill = (recipientId, amount)
                 appState = .sendMoney
