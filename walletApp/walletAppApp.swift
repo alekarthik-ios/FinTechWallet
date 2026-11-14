@@ -31,6 +31,7 @@ struct walletAppApp: App {
                     coordinator.handle(link)
                 }
             })
+            
         }
     }
         
