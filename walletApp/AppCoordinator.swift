@@ -68,7 +68,6 @@ final class AppCoordinator: ObservableObject {
             let useCase = WalletUseCase(walletRepository: repo, keychainService: keychain)
             let viewModel = WalletViewModel(walletUseCase: useCase)
             viewModel.onSendMoneyTapped = { [weak self] in
-                print("🚪 Leaving Wallet: emptying the wardrobe")
                 self?.walletViewModel = nil   //empty VM before screen change to sendmoney
                 self?.appState = .sendMoney
             }

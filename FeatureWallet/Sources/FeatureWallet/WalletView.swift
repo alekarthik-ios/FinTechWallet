@@ -20,6 +20,7 @@ public struct WalletView: View {
     }
     
     public var body: some View {
+        let _ = Self._printChanges()
         Group{
             switch viewModel.state {
             case .idle:
@@ -80,7 +81,7 @@ public struct WalletView: View {
                                         
                                         Spacer()
                                         
-                                        Text(String(format: "$%.2f", transaction.amount))
+                                        Text(transaction.amount, format: .currency(code: "USD"))
                                             .foregroundColor(.white)
                                             .fontWeight(.bold)
                                     }

@@ -36,7 +36,7 @@ public final class WalletViewModel: ObservableObject {
         do {
             let dashboard = try await walletUseCase.execute()
             self.state = .loaded(
-                balance: String(format: "$%.2f", dashboard.wallet.balance),
+                balance: dashboard.wallet.balance.formatted(.currency(code: dashboard.wallet.currency)),
                 transactions: dashboard.transactions
             )
         } catch is CancellationError {
