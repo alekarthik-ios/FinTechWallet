@@ -58,14 +58,16 @@ public struct SendMoneyView: View {
                 Button {
                     Task { await viewModel.sendMoney() }
                 } label: {
-                    Text("Send")
+                    Text(viewModel.isSending ? "Sending..." : "Send")
                         .fontWeight(.bold)
                         .foregroundColor(.purple)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(.white)
                         .cornerRadius(12)
+                        .opacity(viewModel.isSending ? 0.6 : 1)
                 }
+                .disabled(viewModel.isSending)
                 
                 switch viewModel.state {
                 case .idle:

@@ -29,7 +29,15 @@ public final class SendMoneyViewModel: ObservableObject {
     @Published public var state: SendState = .idle
     public var onBackTapped: (() -> Void)?
     
+    public var isSending: Bool {
+        if case .sending = state {return true}else {
+        return false
+        }
+    }
+    
     public func sendMoney() async {
+        
+        guard !isSending else {return}
         
         guard let amountValue = Double(amount), amountValue > 0 else {
             state = .failure("Please enter a valid amount")             //fires a rebuild

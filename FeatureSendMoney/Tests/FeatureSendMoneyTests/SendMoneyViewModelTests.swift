@@ -76,5 +76,25 @@ final class SendMoneyViewModelTests: XCTestCase {
         }
     }
     
+    func test_doubleTapSend_executesOnlyOnce() async {
+        //Arrange
+        let mock = MockSendMoneyUseCase()
+        mock.delay = .milliseconds(100)
+        mock.resultToreturn = Transaction(id: UUID(), amount: 10.0, recipient: "mike", status: .completed, timestamp: Date())
+        let sut = SendMoneyViewModel(sendMoneyUseCase: mock)
+        sut.amount = "25"
+        sut.recipientId = "bob"
+        
+        //Act
+        async let firstSend: Void = sut.sendMoney()
+        async let secondSend:Void = sut.sendMoney()
+        _ = await (firstSend, secondSend)
+        
+        //Assert
+        XCTAssertEqual(mock.executeCallCount, 1)
+        
+        
+    }
+    
 }
 
