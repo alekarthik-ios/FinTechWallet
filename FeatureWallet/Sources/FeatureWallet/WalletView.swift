@@ -96,6 +96,8 @@ public struct WalletView: View {
                         Spacer()
                     }
                     .padding()
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("Wallet balance, \(balance)")
                 }
                 
             case .error(let message):

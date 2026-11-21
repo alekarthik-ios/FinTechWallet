@@ -39,7 +39,8 @@ public final class SendMoneyViewModel: ObservableObject {
         
         guard !isSending else {return}
         
-        guard let amountValue = Double(amount), amountValue > 0 else {
+        guard amount.wholeMatch(of: /\d+(\.\d{1,2})?/) != nil,
+            let amountValue = Decimal(string: amount), amountValue > 0 else {
             state = .failure("Please enter a valid amount")             //fires a rebuild
             return
         }

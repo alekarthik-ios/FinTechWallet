@@ -15,7 +15,7 @@ final class MockSendMoneyRepository: SendMoneyRepositoryProtocol, @unchecked Sen
     var transactionToReturn: Transaction?
     var errorToThrow: Error?
     
-    func sendMoney(amount: Double, recipientId: String, authToken: String) async throws -> Transaction {
+    func sendMoney(amount: Decimal, recipientId: String, authToken: String) async throws -> Transaction {
         if let errorToThrow = errorToThrow {
             throw errorToThrow
         }

@@ -10,7 +10,7 @@ import CoreNetworking
 import SharedModels
 
 public protocol SendMoneyRepositoryProtocol: Sendable{
-    func sendMoney(amount: Double, recipientId: String, authToken: String) async throws -> Transaction
+    func sendMoney(amount: Decimal, recipientId: String, authToken: String) async throws -> Transaction
 }
 
 public final class SendMoneyRepository: SendMoneyRepositoryProtocol {
@@ -20,7 +20,7 @@ public final class SendMoneyRepository: SendMoneyRepositoryProtocol {
         self.networkClient = networkClient
     }
     
-    public func sendMoney(amount: Double, recipientId: String, authToken: String) async throws -> Transaction {
+    public func sendMoney(amount: Decimal, recipientId: String, authToken: String) async throws -> Transaction {
     
         
         let id = UUID(uuidString: recipientId) ?? UUID()
