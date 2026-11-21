@@ -10,7 +10,7 @@ public enum Endpoint
 {
     case login (email: String, password: String)
     case getWallet
-    case sendMoney (amount: Double, recipientId: UUID)
+    case sendMoney (amount: Decimal, recipientId: UUID)
     case getTransactions
     
     

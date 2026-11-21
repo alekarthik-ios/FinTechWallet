@@ -9,6 +9,10 @@ import Foundation
 import SharedModels
 @testable import FeatureSendMoney
 
+struct MockNotConfigured: Error{
+    
+}
+
 @MainActor
 final class MockSendMoneyUseCase: SendMoneyUseCaseProtocol, @unchecked Sendable {
     
@@ -17,10 +21,10 @@ final class MockSendMoneyUseCase: SendMoneyUseCaseProtocol, @unchecked Sendable 
     var errorToReturn: Error?
     var delay: Duration = .zero
     
-    var captureAmount: Double?
+    var captureAmount: Decimal?
     var captureRecipient: String?
     
-    func execute(amount: Double, recipientId: String) async throws -> Transaction {
+    func execute(amount: Decimal, recipientId: String) async throws -> Transaction {
         executeCallCount += 1
         captureAmount = amount
         captureRecipient = recipientId
@@ -28,7 +32,9 @@ final class MockSendMoneyUseCase: SendMoneyUseCaseProtocol, @unchecked Sendable 
         if let errorToReturn = errorToReturn {
             throw errorToReturn
         }
-        return resultToreturn!
+        
+        guard let result = resultToreturn else { throw MockNotConfigured() }
+        return result
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 
-public enum TransactionType: Codable, Sendable {
+public enum TransactionType: String, Codable, Sendable {
     case pending
     case completed
     case failed

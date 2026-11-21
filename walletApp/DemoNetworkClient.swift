@@ -48,7 +48,7 @@ final class DemoNetworkClient: NetworkClientProtocol {
        case .getTransactions:
            let transactions: [Transaction] = [
                Transaction(id: UUID(), amount: 10.00, recipient: "Karthikale", status: .completed, timestamp: Date()),
-               Transaction(id: UUID(), amount: 25.50, recipient: "Amazon", status: .completed, timestamp: Date()),
+               Transaction(id: UUID(), amount: 25.50, recipient: "Amazon", status: .pending, timestamp: Date()),
                Transaction(id: UUID(), amount: 500.00, recipient: "Deposit", status: .pending, timestamp: Date())
            ]
            return transactions as! T

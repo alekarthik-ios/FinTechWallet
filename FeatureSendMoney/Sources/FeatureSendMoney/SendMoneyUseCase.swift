@@ -16,7 +16,7 @@ public enum SendMoneyError: Error{
 }
 
 public protocol SendMoneyUseCaseProtocol: Sendable {
-    func execute(amount: Double, recipientId: String) async throws-> Transaction
+    func execute(amount: Decimal, recipientId: String) async throws-> Transaction
 }
 
 public final class SendMoneyUseCase: SendMoneyUseCaseProtocol {
@@ -28,7 +28,7 @@ public final class SendMoneyUseCase: SendMoneyUseCaseProtocol {
         self.keychainService = keychainService
     }
     
-    public func execute(amount: Double, recipientId: String) async throws -> Transaction {
+    public func execute(amount: Decimal, recipientId: String) async throws -> Transaction {
         
         guard let data = try await keychainService.read(forKey: "authToken")else {
             throw SendMoneyError.notAuthenticated
