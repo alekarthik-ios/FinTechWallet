@@ -16,7 +16,7 @@ public enum TransactionType: Codable, Sendable {
 
 public struct Transaction: Codable, Sendable {
     public let id: UUID
-    public let amount: Double
+    public let amount: Decimal
     public let recipient: String
     public let status: TransactionType
     public var statusLabel: String{
@@ -31,7 +31,7 @@ public struct Transaction: Codable, Sendable {
     }
     public let timestamp: Date
     
-    public init(id: UUID, amount: Double, recipient: String, status: TransactionType, timestamp: Date) {
+    public init(id: UUID, amount: Decimal, recipient: String, status: TransactionType, timestamp: Date) {
         self.id = id
         self.amount = amount
         self.recipient = recipient
