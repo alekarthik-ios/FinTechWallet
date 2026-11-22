@@ -30,7 +30,8 @@ let package = Package(
             dependencies: [
                 "FeatureSendMoney",
                 "CoreStorage",
-                "SharedModels"
+                "SharedModels",
+                "CoreNetworking"
             ]
         )
 

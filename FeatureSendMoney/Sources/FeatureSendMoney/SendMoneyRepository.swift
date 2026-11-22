@@ -23,7 +23,9 @@ public final class SendMoneyRepository: SendMoneyRepositoryProtocol {
     public func sendMoney(amount: Decimal, recipientId: String, authToken: String) async throws -> Transaction {
     
         
-        let id = UUID(uuidString: recipientId) ?? UUID()
+        guard let id = UUID(uuidString: recipientId) else {
+            throw SendMoneyError.invalidRecipientID
+        }
         let transaction: Transaction = try await networkClient.request(endpoint: .sendMoney(amount: amount, recipientId: id))
         return transaction
     }
