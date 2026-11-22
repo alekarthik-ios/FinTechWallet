@@ -9,11 +9,7 @@ import Foundation
 import SharedModels
 import CoreStorage
 
-public enum SendMoneyError: Error{
-    case invalidAmount
-    case invalidRecipientID
-    case notAuthenticated
-}
+
 
 public protocol SendMoneyUseCaseProtocol: Sendable {
     func execute(amount: Decimal, recipientId: String) async throws-> Transaction
